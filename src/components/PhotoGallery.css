@@ -1,0 +1,50 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 24px 16px;
+  background: #fdf6f8;
+}
+
+.form-intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro-icon {
+  font-size: 40px;
+  margin: 0;
+  width: 40px;
+}
+
+.intro-text {
+  font-style: italic;
+  color: #c06080;
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.form-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(212, 130, 154, 0.2);
+  border: 1px solid #f5d5df;
+  width: 100%;
+  max-width: 480px;
+}
+
+.form-label {
+  color: #c06080 !important;
+  font-weight: bold;
+}
+
+.form-btn {
+  --background: #d4829a;
+  --border-radius: 30px;
+  margin-top: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
