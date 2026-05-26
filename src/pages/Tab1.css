@@ -45,47 +45,54 @@
 .blum-padding {
   padding: 16px;
 }
+.blum-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
 
 .blum-card {
-  border-radius: 20px;
-  margin-bottom: 20px;
+  border-radius: 16px;
+  margin: 0;
   box-shadow: 0 4px 15px rgba(212, 130, 154, 0.2);
   border: 1px solid #f5d5df;
   background: white;
+  overflow: hidden;
 }
 
 .blum-card-img {
-  height: 230px;
+  width: 100%;
+  height: 150px;
   object-fit: cover;
-  border-radius: 20px 20px 0 0;
 }
 
 .blum-card-title {
   color: #c06080;
   font-family: Georgia, serif;
-  font-size: 20px;
+  font-size: 14px;
+  margin: 0;
+}
+
+.blum-card-description {
+  color: #8a6070;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.blum-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+  border-top: 1px solid #f5d5df;
 }
 
 .blum-badge {
   background: linear-gradient(135deg, #d4829a, #c9a8c0);
   color: white;
-  font-size: 13px;
-  padding: 4px 10px;
+  font-size: 11px;
+  padding: 2px 8px;
   border-radius: 20px;
   display: inline-block;
   margin-top: 4px;
-}
-
-.blum-card-description {
-  color: #8a6070;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.blum-card-footer {
-  text-align: center;
-  padding: 8px;
-  font-size: 11px;
-  color: #daa0b0;
-  border-top: 1px solid #f5d5df;
 }

@@ -1,0 +1,72 @@
+.orders-content { --background: #fdf6f8; }
+
+.blum-header {
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blum-logo-text {
+  font-size: 24px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  letter-spacing: 4px;
+  color: white;
+}
+
+.blum-subtitle { font-size: 11px; letter-spacing: 3px; color: #ffe0ea; }
+
+.orders-empty { text-align: center; margin-top: 40%; color: #c9a8c0; }
+.orders-empty-icon { font-size: 52px; }
+.orders-empty-text { font-size: 16px; font-style: italic; }
+
+.orders-wrapper { padding: 16px; }
+
+.order-card {
+  border-radius: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #f5d5df;
+  box-shadow: 0 4px 15px rgba(212,130,154,0.15);
+}
+
+.order-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.order-title { color: #c06080; font-family: Georgia, serif; font-size: 18px; }
+.order-client { font-size: 13px; color: #8a6070; margin: 2px 0; }
+.order-date { font-size: 12px; color: #aaa; margin: 2px 0; }
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #fdf6f8;
+  border-radius: 10px;
+}
+
+.order-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+.order-item-name { font-size: 14px; color: #c06080; font-weight: bold; margin: 0; }
+.order-item-qty { font-size: 13px; color: #8a6070; margin: 2px 0 0; }
+
+.order-total {
+  text-align: right;
+  font-size: 15px;
+  color: #5a3a44;
+  margin: 10px 0;
+  padding-top: 8px;
+  border-top: 1px solid #f5d5df;
+}
+
+.order-btn {
+  --background: #d4829a;
+  --border-radius: 30px;
+  margin-top: 8px;
+}

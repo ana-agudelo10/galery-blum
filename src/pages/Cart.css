@@ -1,0 +1,80 @@
+.cart-content { --background: #fdf6f8; }
+
+.blum-header {
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blum-logo-text {
+  font-size: 24px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  letter-spacing: 4px;
+  color: white;
+}
+
+.blum-subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #ffe0ea;
+}
+
+.cart-empty {
+  text-align: center;
+  margin-top: 40%;
+  color: #c9a8c0;
+}
+
+.cart-empty-icon { font-size: 52px; }
+.cart-empty-text { font-size: 16px; font-style: italic; }
+
+.cart-wrapper { padding: 16px; }
+
+.cart-card {
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #f5d5df;
+}
+
+.cart-card-inner {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 12px;
+}
+
+.cart-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart-info { flex: 1; }
+.cart-name { font-size: 15px; color: #c06080; margin: 0 0 4px; font-weight: bold; }
+.cart-price { font-size: 14px; color: #8a6070; margin: 0 0 4px; }
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f5d5df;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #5a3a44;
+  font-weight: bold;
+}
+
+.cart-total-amount { color: #d4829a; font-size: 20px; }
+
+.checkout-btn {
+  --background: #d4829a;
+  --border-radius: 30px;
+  font-weight: bold;
+}

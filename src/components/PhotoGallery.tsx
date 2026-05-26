@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
-import {
-  IonButton, IonInput, IonTextarea,
-  IonItem, IonLabel, IonIcon
-} from '@ionic/react';
+import { IonButton, IonInput, IonTextarea, IonItem, IonLabel, IonIcon } from '@ionic/react';
 import { camera } from 'ionicons/icons';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { isPlatform } from '@ionic/react';
 import { Capacitor } from '@capacitor/core';
-import { UserPhoto } from '../hooks/usePhotoGallery';
+import { UserPhoto, usePhotoGallery } from '../hooks/usePhotoGallery';
+import { useAuth } from '../context/AuthContext';
 import './PhotoGallery.css';
 
-interface Props {
-  addPhoto: (photo: UserPhoto) => void;
-}
-
-const PhotoGallery: React.FC<Props> = ({ addPhoto }) => {
+const PhotoGallery: React.FC = () => {
+  const { addPhoto } = usePhotoGallery();
+  const { user } = useAuth();
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
 
   const handleAgregar = async () => {
-    if (!nombre || !descripcion || !precio) {
-      alert('Por favor completa todos los campos');
-      return;
-    }
+    if (!user) { alert('Debes iniciar sesión'); return; }
+    if (!nombre || !descripcion || !precio) { alert('Completa todos los campos'); return; }
 
     const photo = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -49,36 +43,33 @@ const PhotoGallery: React.FC<Props> = ({ addPhoto }) => {
       });
     }
 
-    await Filesystem.writeFile({
-      path: fileName,
-      data: base64Data,
-      directory: Directory.Data
-    });
+    await Filesystem.writeFile({ path: fileName, data: base64Data, directory: Directory.Data });
 
     const newPhoto: UserPhoto = isPlatform('hybrid')
-      ? { filepath: fileName, webviewPath: Capacitor.convertFileSrc(photo.path!), nombre, descripcion, precio }
-      : { filepath: fileName, webviewPath: photo.webPath, nombre, descripcion, precio };
+      ? { filepath: fileName, webviewPath: Capacitor.convertFileSrc(photo.path!), nombre, descripcion, precio, ownerId: user.email }
+      : { filepath: fileName, webviewPath: photo.webPath, nombre, descripcion, precio, ownerId: user.email };
 
-    addPhoto(newPhoto);
+    await addPhoto(newPhoto);
     setNombre('');
     setDescripcion('');
     setPrecio('');
+    alert('¡Producto agregado! 🌸');
   };
 
   return (
     <div className="form-wrapper">
       <div className="form-intro">
-        <img src="/icon.png" className="intro-icon" alt="Blum" />
-        <p className="intro-text">Agrega un nuevo producto a tu colección</p>
+        <img src="/icon.png" className="intro-icon" alt="icono" />
+        <p className="intro-text">Agrega un nuevo producto</p>
       </div>
       <div className="form-card">
         <IonItem lines="none">
-          <IonLabel position="stacked" className="form-label">Nombre del producto</IonLabel>
+          <IonLabel position="stacked" className="form-label">Nombre</IonLabel>
           <IonInput value={nombre} onIonChange={e => setNombre(e.detail.value!)} placeholder="Ej: Sérum Vitamina C" />
         </IonItem>
         <IonItem lines="none">
           <IonLabel position="stacked" className="form-label">Descripción</IonLabel>
-          <IonTextarea value={descripcion} onIonChange={e => setDescripcion(e.detail.value!)} placeholder="Describe tu producto..." rows={3} />
+          <IonTextarea value={descripcion} onIonChange={e => setDescripcion(e.detail.value!)} rows={3} placeholder="Describe tu producto..." />
         </IonItem>
         <IonItem lines="none">
           <IonLabel position="stacked" className="form-label">Precio ($)</IonLabel>
@@ -86,7 +77,7 @@ const PhotoGallery: React.FC<Props> = ({ addPhoto }) => {
         </IonItem>
         <IonButton expand="block" className="form-btn" onClick={handleAgregar}>
           <IonIcon icon={camera} slot="start" />
-          Agregar Foto
+          Tomar Foto y Agregar
         </IonButton>
       </div>
     </div>
